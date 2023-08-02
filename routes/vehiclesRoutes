@@ -1,0 +1,10 @@
+const express = require("express");
+const router = express.Router();
+
+const vehiclesControllers = require("../controllers/vehiclesControllers.js");
+
+router.get("/vehicles", vehiclesControllers.getVehicles);
+
+router.get("/vehicles/:id", vehiclesControllers.getVehicleById);
+
+module.exports = router;
