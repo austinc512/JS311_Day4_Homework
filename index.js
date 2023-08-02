@@ -1,8 +1,6 @@
 const express = require("express");
 const app = express();
 
-// require data here ?
-
 // wat
 app.use(express.static("public"));
 
