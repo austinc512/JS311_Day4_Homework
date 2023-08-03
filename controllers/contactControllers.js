@@ -45,8 +45,6 @@ const getContacts = (req, res) => {
 };
 
 const getContactById = (req, res) => {
-  console.log(`req.params.id should be below this`);
-  console.log(req.params.id);
   const result = dataSet.filter((element) => element._id == req.params.id);
   if (result.length === 0) {
     res.json(`This doesn't appear to be a valid contact ID`);
@@ -56,6 +54,8 @@ const getContactById = (req, res) => {
 };
 
 const createContact = (req, res) => {
+  // console.log(`request body:`);
+  // console.log(req.body);
   /*
 example contact:
 {
@@ -87,7 +87,7 @@ optional: avatar.
     newContact.occupation = req.body.occupation || "";
     dataSet.push(newContact);
     console.log(`contact added`);
-    console.log(dataSet);
+    console.log(newContact);
     res.json(newContact);
   }
 };

@@ -1,15 +1,5 @@
 const dataSet = require("../data/comments");
 
-// console.log(dataSet);
-/*
-[
-  { _id: 1, body: 'ACA is great!', postId: 1 },
-  { _id: 2, body: 'I love promises!', postId: 1 },
-  { _id: 3, body: 'Fetch is great!', postId: 1 },
-  { _id: 4, body: "I can't wait to do the check point!", postId: 1 }
-]
-*/
-
 const getComments = (req, res) => {
   res.json(dataSet);
 };
@@ -45,10 +35,3 @@ module.exports = {
   getCommentById,
   createComment,
 };
-
-/*
-
-comment created by frontend:
-{ _id: 9320, body: { body: 'BRUH WUT THE HECK' }, postId: 1 }
-
-*/
