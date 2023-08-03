@@ -42,11 +42,9 @@ const getProductById = (req, res) => {
 };
 
 const createProduct = (req, res) => {
+  console.log(`entering create product block`);
+  console.log(req.body);
   /*
-
-I think everything should be required execpt the reviews and _id
-example object:
-
 {
     "_id": 2,
     "name": "Topiramate",
@@ -63,14 +61,7 @@ example object:
       ...
 }      
 */
-  if (
-    !req.body.name ||
-    !req.body.description ||
-    !req.body.rating ||
-    !req.body.imgUrl ||
-    !req.body.price ||
-    !req.body.category
-  ) {
+  if (!req.body.name || !req.body.description) {
     res
       .status(400)
       .json({ message: "you have not supplied a product property" });
@@ -79,21 +70,25 @@ example object:
     const newProduct = {};
     newProduct.name = req.body.name;
     newProduct.description = req.body.description;
-    newProduct.imgUrl = req.body.imgUrl;
-    newProduct.price = req.body.price;
-    newProduct.category = req.body.category;
-
+    newProduct.imgUrl = req.body.imgUrl ?? "";
+    newProduct.price = req.body.price ?? "";
+    newProduct.category = req.body.category ?? "";
+    newProduct._id = Math.floor(Math.random() * 100000);
     newProduct.reviews = [];
     // validate reviews: only push to newProduct.reviews if review has description AND rating
-    for (let item of req.body.reviews) {
-      // console.log(item.description);   (misc troubleshooting)
-      // console.log(item.rating);
-      // console.log(Boolean(item.description && item.rating));
-      if (item.description && item.rating) {
-        newProduct.reviews.push(item);
+    if (req.body.reviews && req.body.reviews.length > 0) {
+      for (let item of req.body.reviews) {
+        // console.log(item.description);   (misc troubleshooting)
+        // console.log(item.rating);
+        // console.log(Boolean(item.description && item.rating));
+        if (item.description && item.rating) {
+          newProduct.reviews.push(item);
+        }
       }
     }
     dataSet.push(newProduct);
+    console.log(`NEW PRODUCT BELOW`);
+    console.log(newProduct);
     console.log(dataSet);
     res.json(newProduct);
   }

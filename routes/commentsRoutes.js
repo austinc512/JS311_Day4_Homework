@@ -10,3 +10,5 @@ router.get("/comments/:id", commentsControllers.getCommentById);
 router.post("/comments/", commentsControllers.createComment);
 
 module.exports = router;
+
+// list, show, create

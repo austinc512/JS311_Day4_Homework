@@ -24,14 +24,15 @@ const getCommentById = (req, res) => {
 };
 
 const createComment = (req, res) => {
+  console.log(req.body);
   // { _id: 3, body: 'Fetch is great!', postId: 1 }
   // will only require body property
-  if (!req.body.comment) {
+  if (!req.body.body) {
     res.json("you have not supplied a body property");
   } else {
     const newComment = {};
     newComment._id = Math.floor(Math.random() * 100000);
-    newComment.body = req.body.comment;
+    newComment.body = req.body.body;
     newComment.postId = 1;
     dataSet.push(newComment);
     console.log(dataSet);
@@ -44,3 +45,10 @@ module.exports = {
   getCommentById,
   createComment,
 };
+
+/*
+
+comment created by frontend:
+{ _id: 9320, body: { body: 'BRUH WUT THE HECK' }, postId: 1 }
+
+*/

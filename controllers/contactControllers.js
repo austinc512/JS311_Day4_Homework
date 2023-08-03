@@ -84,6 +84,7 @@ optional: avatar.
     newContact.name = req.body.name;
     newContact._id = Math.floor(Math.random() * 100000);
     newContact.avatar = req.body.avatar || "";
+    newContact.occupation = req.body.occupation || "";
     dataSet.push(newContact);
     console.log(`contact added`);
     console.log(dataSet);
@@ -96,9 +97,3 @@ module.exports = {
   getContactById,
   createContact,
 };
-
-/*
-
-For each API, we need GET, GET by ID, and POST
-
-*/
